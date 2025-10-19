@@ -1,7 +1,7 @@
 {
   "name": "dwaynemcyrus-com",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -10,5 +10,14 @@
   },
   "dependencies": {
     "astro": "^5.14.6"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-wiki-link": "^2.0.1",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0"
   }
 }
