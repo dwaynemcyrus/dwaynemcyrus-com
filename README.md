@@ -41,3 +41,9 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+***
+
+## Notes to self
+- [ ] Add back to Vercel `bash scripts/setup-ssh-and-submodules.sh && astro build` under Project Settings > Build and Deploy > Framework Settings > Build Command
+- [ ] Set you content.config.ts to have a base section that hold all frontmatter values that are to be present in every collection.
