@@ -1,0 +1,52 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+	collectionTitle?: string;
+	collectionDescription?: string;
+}
+
+const { title, description, collectionTitle, collectionDescription } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+	<slot name="header" slot="header" />
+	<div class="container">
+		{collectionTitle && (
+			<header class="collection-header">
+				<h1>{collectionTitle}</h1>
+				{collectionDescription && <p class="collection-description">{collectionDescription}</p>}
+			</header>
+		)}
+		<div class="collection-content">
+			<slot />
+		</div>
+		<slot name="sidebar" />
+	</div>
+	<slot name="footer" slot="footer" />
+</BaseLayout>
+
+<style>
+	.container {
+		margin-top: var(--spacing-2xl);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.collection-header {
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.collection-description {
+		font-size: var(--font-size-lg);
+		color: var(--color-text-muted);
+		margin-top: var(--spacing-sm);
+	}
+
+	.collection-content {
+		display: grid;
+		gap: var(--spacing-xl);
+	}
+</style>
+

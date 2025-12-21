@@ -36,6 +36,32 @@ const essays = defineCollection({
 	}),
 });
 
+// Lab Collection - experiments that feed other systems
+const lab = defineCollection({
+	loader: glob({ pattern: '**/[^_]*.md', base: './src/content/lab' }),
+	schema: z.object({
+		cuid: allowEmpty(z.string().optional()),
+		date: z.coerce.date(),
+		title: z.string(),
+		subtitle: allowEmpty(z.string().optional()),
+		summary: allowEmpty(z.string().optional()),
+		description: allowEmpty(z.string().optional()),
+		status: allowEmpty(z.string().optional()),
+		slug: allowEmpty(z.string().optional()),
+		collection: allowEmpty(z.array(z.string()).optional()),
+		categories: allowEmpty(z.array(z.string()).optional()),
+		resources: allowEmpty(z.array(z.string()).optional()),
+		tags: allowEmpty(z.array(z.string()).optional().default([])),
+		coverURL: allowEmpty(z.string().optional()),
+		coverAltText: allowEmpty(z.string().optional()),
+		coverCaptionText: allowEmpty(z.string().optional()),
+		coverThumbURL: allowEmpty(z.string().optional()),
+		dateUpdated: allowEmpty(z.coerce.date().optional()),
+		dateStart: allowEmpty(z.coerce.date().optional()),
+		dateEnd: allowEmpty(z.coerce.date().optional()),
+	}),
+});
+
 // Notes Collection - atomic notes for digital garden
 const notes = defineCollection({
 	loader: glob({ pattern: '**/[^_]*.md', base: './src/content/notes' }),
@@ -95,6 +121,7 @@ const references = defineCollection({
 export const collections = {
 	// essays,
 	// notes,
+	lab,
 	projects,
 	// references,
 };

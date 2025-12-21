@@ -1,0 +1,138 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+	articleTitle: string;
+	articleDate?: Date | string;
+	tags?: string[];
+	metadata?: Record<string, string>;
+}
+
+const { title, description, articleTitle, articleDate, tags = [], metadata = {} } = Astro.props;
+
+const formattedDate = articleDate
+	? new Date(articleDate).toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+		})
+	: null;
+---
+
+<BaseLayout title={title || articleTitle} description={description}>
+	<slot name="header" slot="header" />
+	<div class="container container-wide">
+		<article class="article">
+			<header class="article-header">
+				<h1 class="article-title">{articleTitle}</h1>
+				<div class="article-meta">
+					{formattedDate && <time datetime={articleDate.toString()}>{formattedDate}</time>}
+					{tags.length > 0 && (
+						<ul class="article-tags">
+							{tags.map((tag) => (
+								<li class="article-tag">{tag}</li>
+							))}
+						</ul>
+					)}
+				</div>
+				{Object.keys(metadata).length > 0 && (
+					<dl class="article-metadata">
+						{Object.entries(metadata).map(([key, value]) => (
+							<>
+								<dt>{key}</dt>
+								<dd>{value}</dd>
+							</>
+						))}
+					</dl>
+				)}
+			</header>
+			<div class="article-body">
+				<slot />
+			</div>
+		</article>
+		<slot name="sidebar" />
+	</div>
+	<slot name="footer" slot="footer" />
+</BaseLayout>
+
+<style>
+	.container {
+		margin-top: var(--spacing-2xl);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.article {
+		max-width: var(--container-width);
+		margin: 0 auto;
+	}
+
+	.article-header {
+		margin-bottom: var(--spacing-2xl);
+		padding-bottom: var(--spacing-lg);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.article-title {
+		margin-bottom: var(--spacing-md);
+	}
+
+	.article-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-md);
+		align-items: center;
+		font-size: var(--font-size-sm);
+		color: var(--color-text-muted);
+	}
+
+	.article-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-xs);
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.article-tag {
+		display: inline-block;
+		padding: 0.25em 0.75em;
+		background-color: #f5f5f5;
+		border-radius: 0.25rem;
+		font-size: var(--font-size-sm);
+	}
+
+	.article-metadata {
+		margin-top: var(--spacing-md);
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: var(--spacing-xs) var(--spacing-md);
+		font-size: var(--font-size-sm);
+	}
+
+	.article-metadata dt {
+		font-weight: 600;
+		color: var(--color-text-muted);
+	}
+
+	.article-metadata dd {
+		margin: 0;
+	}
+
+	.article-body {
+		line-height: var(--line-height-relaxed);
+	}
+
+	.article-body :deep(h2) {
+		margin-top: var(--spacing-2xl);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.article-body :deep(h3) {
+		margin-top: var(--spacing-xl);
+		margin-bottom: var(--spacing-md);
+	}
+</style>
+

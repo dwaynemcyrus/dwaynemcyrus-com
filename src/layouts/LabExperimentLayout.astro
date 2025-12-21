@@ -1,0 +1,219 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+type LabStatus = 'draft' | 'active' | 'archived';
+
+interface Props {
+	title?: string;
+	description?: string;
+	experimentTitle: string;
+	question: string;
+	outcomeYouCareAbout: string;
+	status?: LabStatus;
+	date?: Date | string;
+	tags?: string[];
+	findings?: string;
+}
+
+const { title, description, experimentTitle, question, outcomeYouCareAbout, status = 'draft', date, tags = [], findings } = Astro.props;
+
+const formattedDate = date
+	? new Date(date).toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+		})
+	: null;
+
+const statusLabels: Record<LabStatus, string> = {
+	draft: 'Draft',
+	active: 'Active',
+	archived: 'Archived',
+};
+
+const statusClasses: Record<LabStatus, string> = {
+	draft: 'status-draft',
+	active: 'status-active',
+	archived: 'status-archived',
+};
+---
+
+<BaseLayout title={title || experimentTitle} description={description}>
+	<slot name="header" slot="header" />
+	<div class="container container-wide">
+		<article class="lab-experiment">
+			<header class="experiment-header">
+				<div class="experiment-meta">
+					{formattedDate && <time datetime={date.toString()}>{formattedDate}</time>}
+					<span class={`status-badge ${statusClasses[status]}`}>{statusLabels[status]}</span>
+					{tags.length > 0 && (
+						<ul class="experiment-tags">
+							{tags.map((tag) => (
+								<li class="experiment-tag">{tag}</li>
+							))}
+						</ul>
+					)}
+				</div>
+				<h1 class="experiment-title">{experimentTitle}</h1>
+			</header>
+
+			<div class="experiment-question">
+				<h2 class="question-heading">Question</h2>
+				<p class="question-text">{question}</p>
+			</div>
+
+			<div class="experiment-outcome">
+				<h2 class="outcome-heading">Outcome I Care About</h2>
+				<p class="outcome-text">{outcomeYouCareAbout}</p>
+			</div>
+
+			{findings && (
+				<div class="experiment-findings">
+					<h2 class="findings-heading">Findings</h2>
+					<div class="findings-content">
+						<slot name="findings">{findings}</slot>
+					</div>
+				</div>
+			)}
+
+			<div class="experiment-notes">
+				<h2 class="notes-heading">Field Notes</h2>
+				<div class="notes-content">
+					<slot />
+				</div>
+			</div>
+		</article>
+	</div>
+	<slot name="footer" slot="footer" />
+</BaseLayout>
+
+<style>
+	.container {
+		margin-top: var(--spacing-2xl);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.lab-experiment {
+		max-width: var(--container-width);
+		margin: 0 auto;
+	}
+
+	.experiment-header {
+		margin-bottom: var(--spacing-2xl);
+		padding-bottom: var(--spacing-lg);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.experiment-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-sm);
+		align-items: center;
+		margin-bottom: var(--spacing-md);
+		font-size: var(--font-size-sm);
+		color: var(--color-text-muted);
+	}
+
+	.status-badge {
+		display: inline-block;
+		padding: 0.25em 0.75em;
+		border-radius: 0.25rem;
+		font-size: var(--font-size-sm);
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.status-draft {
+		background-color: #f5f5f5;
+		color: #666;
+	}
+
+	.status-active {
+		background-color: #e8f5e9;
+		color: #2e7d32;
+	}
+
+	.status-archived {
+		background-color: #f3e5f5;
+		color: #6a1b9a;
+	}
+
+	.experiment-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-xs);
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.experiment-tag {
+		display: inline-block;
+		padding: 0.25em 0.75em;
+		background-color: #f5f5f5;
+		border-radius: 0.25rem;
+		font-size: var(--font-size-sm);
+	}
+
+	.experiment-title {
+		margin-bottom: 0;
+	}
+
+	.experiment-question,
+	.experiment-outcome,
+	.experiment-findings {
+		margin-bottom: var(--spacing-2xl);
+		padding: var(--spacing-xl);
+		background-color: #fafafa;
+		border-left: 4px solid var(--color-border);
+		border-radius: 0.25rem;
+	}
+
+	.question-heading,
+	.outcome-heading,
+	.findings-heading {
+		font-size: var(--font-size-sm);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--color-text-muted);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.question-text,
+	.outcome-text {
+		font-size: var(--font-size-lg);
+		font-weight: 500;
+		margin-bottom: 0;
+	}
+
+	.findings-content {
+		margin-top: var(--spacing-md);
+	}
+
+	.experiment-notes {
+		margin-top: var(--spacing-3xl);
+		padding-top: var(--spacing-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.notes-heading {
+		font-size: var(--font-size-xl);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.notes-content {
+		line-height: var(--line-height-relaxed);
+	}
+
+	.notes-content :deep(h2) {
+		margin-top: var(--spacing-2xl);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.notes-content :deep(h3) {
+		margin-top: var(--spacing-xl);
+		margin-bottom: var(--spacing-md);
+	}
+</style>
+

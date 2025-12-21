@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Dwayne M Cyrus — Artist · Engineer · Mentor";
+---
+<BaseLayout pageTitle={pageTitle}>
+<div slot="header">
+    <h2>Get In Touch</h2>
+    <p>Choose the correct channel below. Messages sent to the wrong address may not receive a response.</p>
+</div>
+
+<div slot="main">
+    <section>
+<h3>General Inquiries</h3>
+<p>For introductions, questions, and general correspondence.</p>
+<p><a href="mailto:hey@dwaynemcyrus.com">hey@dwaynemcyrus.com</a> > <button data-copy="hey@dwaynemcyrus.com">Copy email</button></p>
+</section>
+
+<section>
+    <h3>Business & Professional</h3>
+    <h4>Business / Partnerships</h4>
+    <p>For consulting, collaboration, and professional inquiries.</p>
+    <p><a href="mailto:contact@dwaynemcyrus.com">contact@dwaynemcyrus.com</a><button data-copy="mailto:contact@dwaynemcyrus.com">Copy email</button></p>
+
+    <h4>Press & Media</h4>
+    <p>For interviews, speaking, and media requests.</p>
+    <p><a href="mailto:press@dwaynemcyrus.com">press@dwaynemcyrus.com</a><button data-copy="mailto:press@dwaynemcyrus.com">Copy email</button></p>
+</section>
+
+<section>
+    <h3>Clients & Services</h3>
+    <h4>Client Support</h4>
+    <p>For product access, technical issues, or service-related support.</p>
+    <p><a href="mailto:support@dwaynemcyrus.com">support@dwaynemcyrus.com</a><button data-copy="mailto:support@dwaynemcyrus.com">Copy email</button></p>
+
+    <h4>Billing</h4>
+    <p>For invoices, receipts, and payment-related matters.</p>
+    <p><a href="mailto:billing@dwaynemcyrus.com">billing@dwaynemcyrus.com</a><button data-copy="mailto:billing@dwaynemcyrus.com">Copy email</button></p>
+</section>
+
+<p>Messages sent to the appropriate address receive priority.</p>
+<p>Misrouted inquiries may not be answered.</p>
+
+<!-- TODO Add the social media links or maybe a button to jump down to the social media links from the top. -->
+</div>
+</BaseLayout>

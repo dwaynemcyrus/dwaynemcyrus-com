@@ -1,22 +1,33 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Dwayne M Cyrus — Artist · Engineer · Mentor";
 ---
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Dwayne M. Cyrus</title>
-	</head>
-	<body>
-		<header></header>
-		<aside></aside>
-		<main>
-			<h1>Dwayne Cyrus</h1>
-			<p>Artist. Engineer. Mentor.</p>			
-		</main>
-		<aside></aside>
-		<footer></footer>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+	<div slot="main">
+	<h1 class="visually-hidden">Dwayne M. Cyrus — Artist. Engineer. Mentor.</h1>
+	<section class="identity-statement">
+        <h2>Cyrus</h2>
+        <p>Artist · Engineer · Mentor</p>
+        <p>Building systems, stories, and structures that bring people back to themselves.</p>
+    </section>
+	<section class="content-gates">
+        <!-- <div>
+            <h3>The Artist</h3>
+            <p><strong>Drawing, painting, sculpting, writing — the full expression of the untold stories.</strong><br>A body of work rooted in truth, rebellion, and the lived experience of a man who refuses to fold.</p>
+            <p><a href="">→ Enter the Studio</a></p>
+        </div> -->
+        
+        <div>
+            <h3>The Engineer</h3>
+            <p><strong>Designing intelligent AI systems with discipline and clarity.</strong><br>Interfaces that think. Architectures that scale. Tools that respect the user’s mind.</p>
+            <p><a href="./engineer">→ Enter the Workshop</a></p>
+        </div>
+        
+        <!-- <div>
+            <h3>The Mentor</h3>
+            <p><strong>Guidance for men who want a life built on intention, order, and inner command.</strong><br>No therapy-speak. No pandering. Just sovereignty.</p>
+            <p><a href="">→ Enter the Chamber</a></p>
+        </div> -->
+    </section>
+</div>
+</BaseLayout>

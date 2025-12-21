@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Curriculum Vitae | Dwayne M. Cyrus";
+---
+<BaseLayout pageTitle={pageTitle}>
+
+  <div slot="header">
+<h1>Curriculum Vitae</h1>
+<!-- <p>Scroll for the essentials, download for all the details.</p> -->
+<!-- PDF Download Section -->
+
+<div>
+  <h2 class="cv-name">Dwayne Michael Cyrus</h2>
+  <p class="cv-subtitle">AI Tooling · System Design · Interface Architecture</p>
+</div>
+
+<ul>
+  <li><a href="">GitHub</a><span> · </span></li>
+ <li><a href="/cv">LinkedIn</a><span> · </span></li>
+
+ <li><button><a href="/Dwayne_Cyrus_CV_AI_Design_Engineer.pdf" class="cv-download-link" download>Download PDF Version</a><span> · </span></button></li>
+</ul>
+  </div>
+
+  <main slot="main" class="cv-page">
+<article>
+
+    <section class="cv-header">
+      <p>
+        I build AI-powered systems and interfaces that remove friction from complex workflows. My work focuses on applied AI implementation, deterministic prompt architectures, and high-clarity interface systems. I treat products as structured systems with explicit states, predictable transitions, transparent reasoning, and user-controlled decision surfaces.
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="cv-section">
+      <h3 class="cv-section-title">Experiences</h3>
+    
+          <h4 class="cv-entry-subtitle">AI Tooling & Frontend Engineering <span>— Basel</span></h4>
+          <p>2025 – Present</p>
+          <ul>
+            <li>Build AI-assisted interfaces integrating LLMs into structured workflows with predictable, testable behavior.</li>
+            <li>Design retrieval flows, prompt architectures, and user-in-the-loop decision surfaces.</li>
+            <li>Implement system models, state transitions, and interface architectures for AI-assisted
+              workflows.</li>
+            <li>Model complex workflows using system-state logic for reliability and debuggability.</li>
+            <li>Translate ambiguous problem spaces into data structures, interaction flows, and
+              implementation-ready specs.</li>
+            <li>Develop documentation and internal tooling ensuring transparent, consistent AI behavior.</li>
+          </ul>
+
+          <h4 class="cv-entry-subtitle">Digital Platforms & Systems Design <span>— Toronto & Remote</span></h4>
+          <p>2010 – 2021</p>
+          <ul>
+            <li>Designed structured platforms for navigation, information architecture, and operational workflows.</li>
+            <li>Delivered end-to-end digital experiences emphasizing clarity, stability, and structured visual systems.</li>
+            <li>Built platforms across healthcare, education, and non-profits with disciplined UX and operational focus.</li>
+            <li>Led cross-functional teams delivering production-ready systems.</li>
+            <li>Maintained rigorous workflows from requirements gathering to deployment.</li>
+          </ul>
+
+          <h4 class="cv-entry-subtitle">Studio & Client Platform Work <span>— Toronto</span></h4>
+          <p>2008 – 2016</p>
+          <ul>
+            <li>Delivered websites, brand systems, and user-facing interfaces for diverse clients.</li>
+            <li>Managed platform builds with strict execution and quality control.</li>
+            <li>Supported organizations in updating identity systems, usability, and digital communication
+              workflows.</li>
+            <li>Built long-term client relationships through structured, reliable problem solving.</li>
+          </ul>
+    </section>
+
+    <!-- Flagship Project -->
+    <section class="cv-section">
+      <h3 class="cv-section-title">Flagship Project</h3>
+
+          <h4 class="cv-project-title">MirrorOS</h4>
+          <p class="cv-project-tagline">AI-Assisted Operating System for Thought, Structure, and Execution</p>
+          <ul>
+            <li>Designed the underlying system model: states, transitions, constraints, and review loops.</li>
+            <li>Built interaction frameworks for grounded, predictable, user-controlled AI assistance.</li>
+            <li>Developed structured workflows for analysis, planning, tracking, and synthesis.</li>
+            <li>Created modular interface architectures optimized for clarity and minimal cognitive load.</li>
+            <li>Integrated AI tooling as a layer that enhances user intent without overriding it.</li>
+            <li>Established evaluation pathways to ensure transparency and consistent behavioral outputs.</li>
+          </ul>
+       
+    </section>
+
+    <!-- Lab Experiments -->
+    <section class="cv-section">
+      <h3 class="cv-section-title">Research Experiments</h3>
+      <!-- <p></p> -->
+       <!-- TODO Copy gharbi.me for this section -->
+        <ul class="cv-labs">
+          <li>
+            <strong>Recall</strong> — Local-first retrieval engine for semantic memory systems; context pipelines, deterministic behavior controls, transparent prompt surfaces.
+          </li>
+          <li>
+            <strong>Compass</strong> — Structured analysis environment exploring capture, synthesis, semantic linking, and grounded AI summarization.
+          </li>
+          <li>
+            <strong>Decider</strong> — Decision-making engine with structured criteria, scenario modeling, comparative evaluations, and transparent reasoning.
+          </li>
+        </ul>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="cv-section">
+      <h3 class="cv-section-title">Capabilities</h3>
+            <h4>AI Tooling</h4>
+            <ul>
+              <li>LLM integration for structured, AI-assisted workflows</li>
+              <li>Prompt and context architectures for deterministic behavior</li>
+              <li>Retrieval systems using embeddings and structured context windows</li>
+              <li>User-in-the-loop AI patterns with transparent reasoning and override paths</li>
+              <li>Evaluation workflows for consistency, reliability, and behavioral stability</li>
+            </ul>
+   
+            <h3>Systems Design</h3>
+            <ul>
+              <li>Modeling systems as explicit states, transitions, and constraints</li>
+                <li>Designing data structures that reflect real workflow semantics</li>
+                <li>Defining system boundaries, failure modes, and control surfaces</li>
+                <li>Translating ambiguous problem spaces into implementable system logic</li>
+                <li>Rapid prototyping, production validation, iteration loops for operational workflows</li>
+            </ul>
+ 
+            <h3>Interface Architecture</h3>
+            <ul>
+              <li>Designing interfaces as extensions of system logic, not decoration</li>
+              <li>Predictable interaction models aligned with underlying state machines</li>
+              <li>Clear separation between interface, system logic, and AI layers</li>
+              <li>Documentation aligned with actual system behavior and constraints</li>
+            </ul>
+ 
+    </section>
+</article>
+  </main>
+</BaseLayout>
+

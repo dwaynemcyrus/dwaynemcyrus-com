@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const pageTitle = "AI Tooling & Software Engineering | Dwayne M. Cyrus";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <header slot="header">
+    <!-- <blockquote>
+      "AI should enhance human judgment, not override it."
+    </blockquote> -->
+  </header>
+
+  <main slot="main" class="engineer-page">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h2 class="hero-title">AI Design Engineer</h2>
+<p>Availabile</p>
+      <p class="hero-summary">
+        I design and engineer AI systems that clarify decisions, reveal patterns, and streamline complex workflows —
+        tools that think with you, not for you.
+      </p>
+
+      <p>
+        Specialized in AI-driven tooling, human-centered systems, reasoning pipelines, and local-first architectures.
+        I build where product design, intelligence, and engineering intersect — creating systems that reduce cognitive
+        load and strengthen user intent.
+      </p>
+
+      <p class="hero-meta">
+        Basel, Switzerland · Available for hire (local & remote)
+      </p>
+
+      <p class="hero-actions">
+        <a href="">GitHub</a><span> · </span><a href="/cv">View the CV</a>
+      </p>
+    </section>
+
+    <!-- OPERATING PRINCIPLES -->
+    <section class="section section-principles">
+      <h2>Operating Principles</h2>
+      <p>Philosophy: Design as discipline. Engineering as order. AI as clarity.</p>
+      <ul>
+        <li><strong>AI must reduce effort.</strong> If it does not eliminate steps, it is unnecessary.</li>
+        <li><strong>Interfaces must be self-explanatory.</strong> Users should not need documentation to proceed.</li>
+        <li><strong>Clarity beats cleverness.</strong> Architecture and flow must be legible.</li>
+        <li><strong>AI should be invisible.</strong> Integrated into the flow, not bolted on.</li>
+        <li><strong>Systems should age well.</strong> Maintainability and predictability matter.</li>
+        <li><strong>Local-first when it increases trust and speed.</strong> Used for reliability, not novelty.</li>
+        <li><strong>AI must support intent.</strong> Where intelligence strengthens the user’s workflow, never overrides it.</li>
+        <li><strong>AI must be structurally grounded.</strong> No intelligence should exist without a supporting architecture.</li>
+      </ul>
+    </section>
+
+    <!-- CURRENT SYSTEM / MAIN PROJECT -->
+    <section class="section section-current">
+      <h2>Currently Building</h2>
+      <p>
+        <strong>MirrorOS</strong><br />
+        Tactical emotional intelligence system for men under pressure — an applied-AI operating layer that turns raw
+        emotional events into structured clarity, behavioral patterns, and command protocols, with privacy as a first
+        principle.
+        <a href="/projects/mirror-os">Case study →</a>
+      </p>
+    </section>
+
+    <!-- LABS / EXPERIMENTS -->
+    <section class="section section-labs">
+      <h2>Recent Labs & Experiments</h2>
+      <p>
+        Sovereign Labs is where I prototype the subsystems that feed into MirrorOS: memory, behavior, narrative, and
+        decision architecture.
+      </p>
+      <ul>
+        <li>
+          <p>
+            <strong>Thunder Recall</strong><br />
+            Local-first semantic memory engine for long-term knowledge and identity recall.
+            <a href="/projects/thunder-recall">Open lab →</a>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <strong>InsightOS</strong><br />
+            Behavioral intelligence experiments for tasks, habits, and personal operations.
+            <a href="/projects/insightos">Open lab →</a>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <strong>Scriptorium</strong><br />
+            Narrative and emotional inference from daily writing — turning text into reflective intelligence.
+            <a href="/projects/scriptorium">Open lab →</a>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <strong>The Decider</strong><br />
+            Scenario modeling and structured decision-making — formalizing complex choices into clear trade-offs.
+            <a href="/projects/the-decider">Open lab →</a>
+          </p>
+        </li>
+      </ul>
+    </section>
+
+<!-- TODO: Make the availbility be a tool that is in the global const values that also take a date to let people know hwat you will be open and or availbale to consider more worl possobly.  -->
+
+    <!-- CALL TO ACTION -->
+    <section class="section section-cta">
+      <h2>Availability</h2>
+      <p>
+        <strong>Available for hire — AI Tooling & Software Engineering.</strong><br />
+        Open to roles in AI implementation, workflow intelligence, internal tools, and frontend engineering.
+      </p>
+      <p>
+        <strong>Email:</strong> <a href="mailto:hey@dwaynemcyrus.com">hey@dwaynemcyrus.com</a><br />
+        <strong>CV:</strong> <a href="/cv">View the CV</a>
+      </p>
+    </section>
+
+
+  </main>
+</BaseLayout>
