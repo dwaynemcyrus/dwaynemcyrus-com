@@ -41,9 +41,9 @@ const toYamlScalar = (value) => {
 	return `"${String(value).replace(/"/g, '\\"')}"`;
 };
 
-const toYamlArray = (value) => {
+const toYamlArray = (value, indent = '  ') => {
 	if (!Array.isArray(value) || value.length === 0) return '[]';
-	return value.map((item) => `- ${toYamlScalar(item)}`).join('\n');
+	return value.map((item) => `${indent}- ${toYamlScalar(item)}`).join('\n');
 };
 
 const makeFrontmatter = (doc) => {
@@ -61,9 +61,13 @@ const makeFrontmatter = (doc) => {
 		`visibility: ${toYamlScalar(doc.visibility)}`,
 		`status: ${toYamlScalar(doc.status)}`,
 		`canonical: ${toYamlScalar(doc.canonical)}`,
-		`redirect_from: ${toYamlArray(doc.redirect_from)}`,
+		Array.isArray(doc.redirect_from) && doc.redirect_from.length > 0
+			? `redirect_from:\n${toYamlArray(doc.redirect_from)}`
+			: 'redirect_from: []',
 		`summary: ${toYamlScalar(summaryValue)}`,
-		`tags: ${toYamlArray(tagsValue)}`,
+		Array.isArray(tagsValue) && tagsValue.length > 0
+			? `tags:\n${toYamlArray(tagsValue)}`
+			: 'tags: []',
 		`date: ${toYamlScalar(dateValue || '')}`,
 		'---',
 	];
