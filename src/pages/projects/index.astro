@@ -1,46 +1,27 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-// import BlogPost from '../../components/BlogPost.astro';
-
-
 import { getCollection } from 'astro:content';
+
 const posts = await getCollection('projects');
-
-
-const allPosts = Object.values(import.meta.glob('../content/projects/*.md', { eager: true }));
-const pageTitle = "AI Dev Projects";
-
+const pageTitle = 'AI Dev Projects';
 ---
 
+<BaseLayout title={pageTitle}>
+	<main slot="main">
+		<h1>Projects</h1>
+		<p>Production-ready work in AI, design systems, and frontend engineering.</p>
 
-    <h1>My project posts</h1>
-<ul>
-  {posts.map(post => (
-    <li><a href={`/projects/${post.id}`}>{post.data.title}</a></li>
-  ))}
-</ul>
-
-
-  <h1>Selected Projects</h1>
-  <p>Production-ready work in AI, design systems, and frontend engineering.</p>
-
-  <ul>
-    <li>Thunder Recall — local-first AI memory engine (link to repo/case study)</li>
-    <li>Voyager OS — sovereign life OS (case study soon)</li>
-    <li>Portfolio — this site (Astro + design system)</li>
-  </ul>
-
-<hr>
-
-    <BaseLayout pageTitle={pageTitle}>
-    <p>This is where you will get to see my projects in progress. There is also a dev vlog on this site.</p>
-    <ul>
-
-
-
-      {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
-
-    </ul>
-    </BaseLayout>
-
+		{posts.length === 0 ? (
+			<p>No public projects yet.</p>
+		) : (
+			<ul>
+				{posts.map((post) => (
+					<li>
+						<a href={`/projects/${post.id}`}>{post.data.title}</a>
+					</li>
+				))}
+			</ul>
+		)}
+	</main>
+</BaseLayout>
 

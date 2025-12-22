@@ -1,24 +1,45 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('lab');
 ---
-<BaseLayout pageTitle="Sovereign Labs — Experimental Systems"> 
-    <main slot="main" class="">
-# Sovereign Labs — Experimental Systems
+<BaseLayout title="Sovereign Labs — Experimental Systems">
+	<main slot="main">
+		<h1>Sovereign Labs — Experimental Systems</h1>
 
-Sovereign Labs is where I test the boundaries of applied AI — running experiments in memory, behavior, writing, and decision architecture. Each lab represents a question I’m trying to answer while building MirrorOS and its surrounding ecosystem.
+		<p>
+			Sovereign Labs is where I test the boundaries of applied AI — running experiments in memory, behavior,
+			writing, and decision architecture. Each lab represents a question I’m trying to answer while building
+			MirrorOS and its surrounding ecosystem.
+		</p>
 
-These are not apps.  
-They are **experiments in cognition.**
+		<p>
+			These are not apps.<br />
+			They are <strong>experiments in cognition.</strong>
+		</p>
 
-Each lab follows a simple methodology:
+		<p>Each lab follows a simple methodology:</p>
 
-- Form a hypothesis  
-- Build a prototype  
-- Test under real constraints  
-- Evaluate what the model understood  
-- Document what I learned  
-- Fold the insight back into the larger system  
+		<ul>
+			<li>Form a hypothesis</li>
+			<li>Build a prototype</li>
+			<li>Test under real constraints</li>
+			<li>Evaluate what the model understood</li>
+			<li>Document what I learned</li>
+			<li>Fold the insight back into the larger system</li>
+		</ul>
 
-This is how I build: not through ideas, but through *experiments*.
-</main>
+		{entries.length === 0 ? (
+			<p>No public lab entries yet.</p>
+		) : (
+			<ul>
+				{entries.map((entry) => (
+					<li>
+						<a href={`/lab/${entry.id}`}>{entry.data.title}</a>
+					</li>
+				))}
+			</ul>
+		)}
+	</main>
 </BaseLayout>
