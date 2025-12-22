@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -11,7 +11,24 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
 	process.exit(1);
 }
 
-const allowlistedPrefixes = ['/lab/', '/projects/'];
+const allowlistPath = process.env.CANONICAL_ALLOWLIST_PATH || 'docs/canonical-allowlist.md';
+
+const parseAllowlist = (content) =>
+	content
+		.split('\n')
+		.map((line) => line.trim())
+		.filter((line) => line.startsWith('- '))
+		.map((line) => line.replace(/^- /, '').replace(/`/g, '').trim())
+		.filter(Boolean);
+
+const loadAllowlist = async () => {
+	const content = await readFile(allowlistPath, 'utf8');
+	const prefixes = parseAllowlist(content);
+	if (!prefixes.length) {
+		throw new Error(`No allowlisted prefixes found in ${allowlistPath}`);
+	}
+	return prefixes;
+};
 
 const slugify = (value) =>
 	value
@@ -54,7 +71,7 @@ const makeFrontmatter = (doc) => {
 	return lines.join('\n');
 };
 
-const derivePath = (doc) => {
+const derivePath = (doc, allowlistedPrefixes) => {
 	const canonical = doc.canonical || '';
 	const prefix = allowlistedPrefixes.find((allowed) => canonical.startsWith(allowed));
 	if (!prefix) return null;
@@ -115,6 +132,7 @@ const fetchDocumentsBatch = async (offset) => {
 };
 
 const exportDocuments = async () => {
+	const allowlistedPrefixes = await loadAllowlist();
 	let exported = 0;
 	let skipped = 0;
 	let scanned = 0;
@@ -145,7 +163,7 @@ const exportDocuments = async () => {
 				continue;
 			}
 
-			const target = derivePath(doc);
+			const target = derivePath(doc, allowlistedPrefixes);
 			if (!target || !target.filename) {
 				skipped += 1;
 				skipReasons.invalid_path = (skipReasons.invalid_path || 0) + 1;
