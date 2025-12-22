@@ -4,9 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/verify-public-mirror.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "export:public": "node scripts/export-public-mirror.mjs"
   },
   "dependencies": {
     "astro": "^5.16.4"
