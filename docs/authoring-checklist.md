@@ -16,6 +16,7 @@ Any document intended for public export must meet all of these:
 - `metadata.summary` (drives summary in frontmatter)
 - `metadata.tags` (array)
 - `metadata.date` (ISO date string)
+- `tiers` (array; informational for public mirror)
 
 ## Common pitfalls
 - `canonical` missing or not allowlisted → export skipped

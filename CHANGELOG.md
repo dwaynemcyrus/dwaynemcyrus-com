@@ -1,17 +1,7 @@
-# Changelog Template
-
----
-
-## 2. CHANGELOG Template (`CHANGELOG.md`)
-
-```md
 # Changelog
 
 All notable changes to this project will be documented in this file.
-
-Format roughly follows [Keep a Changelog] style, but adapted for this project.
-
----
+Format follows Keep a Changelog style, adapted for this repo.
 
 ## [Unreleased]
 
@@ -24,104 +14,54 @@ Format roughly follows [Keep a Changelog] style, but adapted for this project.
 ### Fixed
 - 
 
----
+## [0.5.1] – 2025-12-22
 
-## [0.1.0] – YYYY-MM-DD
+**Status:** v0 – Publishing Spine
+
+### Fixed
+- Exporter YAML array formatting to prevent frontmatter parse errors.
+
+## [0.5.0] – 2025-12-22
+
+**Status:** v0 – Publishing Spine
+
+### Added
+- Phase 1 runbook for export → verify → deploy.
+- Authoring checklist for public export eligibility.
+
+## [0.4.0] – 2025-12-22
+
+**Status:** v0 – Publishing Spine
+
+### Added
+- Supabase content export pipeline for public mirror.
+
+## [0.3.0] – 2025-12-21
 
 **Status:** v0 – Foundation
 
 ### Added
-- Initialized new Astro v5 project in a fresh repo.
-- Added `docs/site-architecture.md` as the source of truth.
-- Created basic layouts: `BaseLayout`, `PageLayout`.
-- Set up initial routes:
-  - `/` (placeholder home)
-  - `/cv` (placeholder)
-- Configured TypeScript and strict Astro settings.
+- Initial site pages and content routes.
 
-### Changed
-- 
-
-### Fixed
-- 
-
----
-
-## [0.2.0] – YYYY-MM-DD
+## [0.2.0] – 2025-12-15
 
 **Status:** v0 – Content Collections
 
 ### Added
-- Defined Astro content collections:
-  - `projects`
-  - `lab`
-  - `writing` (optional)
-- Implemented:
-  - `/projects` index + `[slug]` detail pages.
-  - `/lab` index + `[slug]` experiment pages.
-- Added shared components:
-  - `Nav`
-  - `Footer`
-  - `ProjectCard`
-  - `LabCard`
-  - `TagPill`
+- Content loaded via submodule.
 
-### Changed
-- Updated layout hierarchy to use `CollectionLayout` and `ArticleLayout`.
+## [0.1.0] – 2025-12-05
 
-### Fixed
-- 
-
----
-
-## [0.3.0] – YYYY-MM-DD
-
-**Status:** v0 – Migration & Copy
+**Status:** v0 – Foundation
 
 ### Added
-- Migrated core homepage copy from the previous site.
-- Added first batch of project entries:
-  - Thunder Recall
-  - Voyager OS
-  - Scriptorium
-- Added first Lab experiments, each with:
-  - `question`
-  - `outcomeYouCareAbout`
-  - field-note style body.
+- Initialized Astro project.
+- Added architecture documentation.
 
-### Changed
-- Tuned typography and layout for better readability.
-- Updated navigation to reflect new sections.
-
-### Fixed
-- 
-
----
-
-## [1.0.0] – YYYY-MM-DD
-
-**Status:** v1 – Public Portfolio + Lab
-
-### Added
-- Stable, public-ready:
-  - Home
-  - CV
-  - Projects
-  - Lab
-- Deployed to production (`dwaynemcyrus.com`).
-- Documented versioning model and phases.
-
-### Changed
-- Refined information architecture and copy for clarity and positioning.
-
-### Fixed
-- Minor layout bugs and responsive issues.
-
----
-
-[Unreleased]: https://github.com/<your-username>/<your-repo>/compare/v1.0.0...HEAD
-[0.1.0]: https://github.com/<your-username>/<your-repo>/tree/v0.1.0
-[0.2.0]: https://github.com/<your-username>/<your-repo>/tree/v0.2.0
-[0.3.0]: https://github.com/<your-username>/<your-repo>/tree/v0.3.0
-[1.0.0]: https://github.com/<your-username>/<your-repo>/tree/v1.0.0
-
+[Unreleased]: https://github.com/dwaynemcyrus/dwaynemcyrus-com/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/dwaynemcyrus/dwaynemcyrus-com/compare/v0.5.0...v0.5.1
+[0.5.0]: https://github.com/dwaynemcyrus/dwaynemcyrus-com/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/dwaynemcyrus/dwaynemcyrus-com/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/dwaynemcyrus/dwaynemcyrus-com/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/dwaynemcyrus/dwaynemcyrus-com/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/dwaynemcyrus/dwaynemcyrus-com/releases/tag/v0.1.0

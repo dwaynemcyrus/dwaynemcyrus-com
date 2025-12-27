@@ -51,6 +51,7 @@ const makeFrontmatter = (doc) => {
 	const dateValue = metadata.date || doc.created_at;
 	const summaryValue = metadata.summary || '';
 	const tagsValue = metadata.tags || [];
+	const tiersValue = doc.tiers || [];
 
 	const lines = [
 		'---',
@@ -68,6 +69,9 @@ const makeFrontmatter = (doc) => {
 		Array.isArray(tagsValue) && tagsValue.length > 0
 			? `tags:\n${toYamlArray(tagsValue)}`
 			: 'tags: []',
+		Array.isArray(tiersValue) && tiersValue.length > 0
+			? `tiers:\n${toYamlArray(tiersValue)}`
+			: 'tiers: []',
 		`date: ${toYamlScalar(dateValue || '')}`,
 		'---',
 	];
@@ -104,6 +108,7 @@ const fetchDocumentsBatch = async (offset) => {
 			'status',
 			'canonical',
 			'redirect_from',
+			'tiers',
 			'body_md',
 			'metadata',
 			'created_at',

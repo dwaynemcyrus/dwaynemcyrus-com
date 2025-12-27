@@ -52,6 +52,7 @@ Optional:
 - `redirect_from`
 - `summary` (from `metadata.summary`)
 - `tags` (from `metadata.tags`)
+- `tiers` (from `tiers` array)
 - `date` (from `metadata.date` or `created_at`)
 
 ## Body
@@ -79,6 +80,7 @@ canonical: "/lab/hello-canon"
 redirect_from: []
 summary: "First test document."
 tags: []
+tiers: []
 date: "2025-12-01"
 ---
 

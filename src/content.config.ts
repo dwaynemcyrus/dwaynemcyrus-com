@@ -23,6 +23,7 @@ const publishSchema = z.object({
 	redirect_from: allowEmpty(z.array(z.string()).optional().default([])),
 	summary: allowEmpty(z.string().optional()),
 	tags: allowEmpty(z.array(z.string()).optional().default([])),
+	tiers: allowEmpty(z.array(z.string()).optional().default([])),
 	date: allowEmpty(z.coerce.date().optional()),
 });
 
