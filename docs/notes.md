@@ -12,8 +12,8 @@
 - [ ] Test inserting a template with command, is it on cursor? What frontmatter changes?
 
 - [ ] Tests
-  - [ ] type [[ and confirm wikilink suggestions appear
-  - [ ] type # and confirm tag suggestions appear if matching tags exist
+  - [x] type [[ and confirm wikilink suggestions appear
+  - [>] type # and confirm tag suggestions appear if matching tags exist
   - [ ] intentionally break a known field, for example workbench: maybe or tags: test, and confirm save is blocked with a clear error
   - [ ] check Supabase:
      - items.content stores body only after save
