@@ -5,6 +5,8 @@
 - [ ] In v6 of AstroJS `Astro.generator` is being deprecated.
 - [ ] Investigate what other deprecated code has found their way into your current build
 
+`git submodule update --remote`
+
 ***
 
 ## For the OS
